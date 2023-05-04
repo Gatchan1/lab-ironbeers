@@ -1,3 +1,9 @@
-{{#each beers}}
-{{> beerpartial}}
-{{/each}}
+<div class="beersSections">
+    <div>
+    {{#each beers}}
+        <div class="eachSection">
+        {{> beerpartial}}
+        </div>
+    {{/each}}
+    </div>
+</div>
