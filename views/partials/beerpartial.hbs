@@ -3,6 +3,10 @@
 {{else}}
 <div class="spaceNoImg"></div>
 {{/if}}
+{{#if this.idLink}}
+<a href={{this.idLink}}><h1>{{this.name}}</h1></a>
+{{else}}
 <h1>{{this.name}}</h1>
+{{/if}}
 <h2>{{this.tagline}}</h2>
 <p>{{this.description}}</p>

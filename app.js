@@ -26,13 +26,29 @@ app.get('/', (req, res) => {
 app.get('/beers', (req, res) => {
   punkAPI.getBeers()
   .then(response => {
-    const beersObject = {beers: response}
+    console.log(response);
+    response.forEach(beer => {
+      beer.idLink = `/beers/${beer.id}`
+    });
+    const beersObject = {beers: response};
+    console.log(response);
     res.render("beers", beersObject)
   })
   .catch(err => {
     console.log(err)
   })
-  
+});
+
+app.get('/beers/:id', (req, res) => {
+  const id = req.params.id;
+  punkAPI.getBeer(id)
+  .then(response => {
+    console.log(response)
+    res.render('random-beer', response[0]);
+  })
+  .catch(err => {
+    console.log(err)
+  })
 });
 
 app.get('/random-beer', (req, res) => {
